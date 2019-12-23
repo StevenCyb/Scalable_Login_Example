@@ -1,0 +1,26 @@
+{
+  "name": "nodejs_scaled_login",
+  "version": "1.0.0",
+  "description": "A simple example of a scaled login app.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "NodeJs",
+    "Scaled",
+    "Login",
+    "App"
+  ],
+  "author": "Steven Cybinski",
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "docker-container-id": "^1.0.1",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.4.1"
+  }
+}

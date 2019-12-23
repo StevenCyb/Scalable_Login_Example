@@ -1,0 +1,91 @@
+version: '3'
+services:
+  loginapp1:
+    container_name: loginapp1
+    restart: always
+    build: ./login_app
+    env_file: .env
+    environment:
+      - MONGO_USERNAME=$MONGO_USERNAME
+      - MONGO_PASSWORD=$MONGO_PASSWORD
+      - MONGO_HOSTNAME=mongodb
+      - MONGO_PORT=$MONGO_PORT
+      - MONGO_DB=$MONGO_DB 
+    networks:
+      - backend_db
+      - backend_proxy
+    depends_on:
+      - mongodb
+  loginapp2:
+    container_name: loginapp2
+    restart: always
+    build: ./login_app
+    env_file: .env
+    environment:
+      - MONGO_USERNAME=$MONGO_USERNAME
+      - MONGO_PASSWORD=$MONGO_PASSWORD
+      - MONGO_HOSTNAME=mongodb
+      - MONGO_PORT=$MONGO_PORT
+      - MONGO_DB=$MONGO_DB 
+    networks:
+      - backend_db
+      - backend_proxy
+    depends_on:
+      - mongodb
+  loginapp3:
+    container_name: loginapp3
+    restart: always
+    build: ./login_app
+    env_file: .env
+    environment:
+      - MONGO_USERNAME=$MONGO_USERNAME
+      - MONGO_PASSWORD=$MONGO_PASSWORD
+      - MONGO_HOSTNAME=mongodb
+      - MONGO_PORT=$MONGO_PORT
+      - MONGO_DB=$MONGO_DB 
+    networks:
+      - backend_db
+      - backend_proxy
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    env_file: .env
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=$MONGO_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD=$MONGO_PASSWORD
+    volumes:  
+      - ./data:/data/db
+    networks:
+      - backend_db
+
+  proxy:
+    container_name: proxy
+    restart: always
+    build: ./load-balancer
+    ports:
+      - "80:80"
+    depends_on:
+      - loginapp1
+      - loginapp2
+      - loginapp3
+    networks:
+      - frontend
+      - backend_proxy
+
+networks:
+  frontend:
+    internal: false
+  backend_db:
+    internal: true
+  backend_proxy:
+    internal: true
+ 
+
+
+

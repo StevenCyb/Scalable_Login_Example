@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="author" content="Steven Cybinski">
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<title>Demo-Dashboard</title>
+		<style>
+			.list-item {
+				width: 100%;
+				margin-bottom: 3px;
+				border: solid 1px #333333;
+				word-wrap: break-word;
+			}
+			.list-item-header {
+				font-size: 18px;
+				font-weight: bold;
+				background-color: #aaaaaa;
+				border-bottom: solid 1px #333333;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="list-item">
+			<div class="list-item-header">Container-ID</div>
+			{{container_id}}
+		</div>
+		<div class="list-item">
+			<div class="list-item-header">Username</div>
+			{{username}}
+		</div>
+		<div class="list-item">
+			<div class="list-item-header">Token</div>
+			{{token}}
+		</div>
+		<div class="list-item">
+			<div class="list-item-header">Cookie</div>
+			{{cookie}}
+		</div>
+	</body>
+</html>
